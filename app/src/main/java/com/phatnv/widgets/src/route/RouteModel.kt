@@ -1,4 +1,6 @@
 package com.phatnv.widgets.src.route
 
-class RouteModel {
-}
+data class DetailModel(
+    val id: String,
+    val name: String
+)

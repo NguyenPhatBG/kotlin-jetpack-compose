@@ -1,4 +1,5 @@
 package com.phatnv.widgets.src.login
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,15 +17,15 @@ import com.phatnv.widgets.data.enum.APPROUTES
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginPage(navController: NavController) {
-    Scaffold{
+    Scaffold {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Button(onClick = {
-                navController.navigate(APPROUTES.HOME.name){
-                    popUpTo(APPROUTES.LOGIN.name){
+                navController.navigate(APPROUTES.HOME.name) {
+                    popUpTo(APPROUTES.LOGIN.name) {
                         inclusive = true
                     }
                 }

@@ -2,38 +2,55 @@ package com.phatnv.widgets.src.route
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.phatnv.widgets.data.enum.APPROUTES
+import androidx.navigation.navArgument
 import com.phatnv.widgets.src.detail.DetailPage
-import com.phatnv.widgets.src.home.HomeContent
-import com.phatnv.widgets.src.home.HomePage
-import com.phatnv.widgets.src.login.LoginPage
+import com.phatnv.widgets.src.home.HomeScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
     NavHost(
-        navController = navController, startDestination = APPROUTES.LOGIN
-            .name,
+        navController = navController,
+        startDestination = NavRoute.Home.withArgs(NavRoute.Home.params)
     ) {
-        composable(APPROUTES.LOGIN.name) {
-            LoginPage(navController = navController)
+        composable(
+            NavRoute.Home.withArgsFormat(NavRoute.Home.params),
+            arguments = listOf(
+                navArgument(NavRoute.Home.params) { type = NavType.StringType },
+            )
+        ) { backStackEntry ->
+            val arg = backStackEntry.arguments
+            HomeScreen(
+                params = arg?.getString(NavRoute.Home.params),
+                navigateToDetail = { id, name ->
+                    navController.navigate(NavRoute.Detail.withArgs(id.toString(), name))
+                }
+            )
         }
-        composable(APPROUTES.HOME.name) {
-            HomePage(authNavHostController = navController)
+        composable(
+            NavRoute.Detail.withArgsFormat( NavRoute.Detail.id, NavRoute.Detail.name),
+            arguments = listOf(
+                navArgument(NavRoute.Detail.id) { type = NavType.StringType },
+                navArgument(NavRoute.Detail.name) { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val arg = backStackEntry.arguments
+            val id = arg?.getString(NavRoute.Detail.id) ?: ""
+            val name = arg?.getString(NavRoute.Detail.name) ?: ""
+            val data = DetailModel(
+                id = id,
+                name = name
+            )
+            DetailPage(
+                data = data,
+                popBackStack = { params ->
+                    navController.navigate(
+                        route = NavRoute.Home.withArgs(params),
+                    )
+                }
+            )
         }
-    }
-}
-
-@Composable
-fun NavigationGraphHome(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = APPROUTES.HOME_CONTENT.name){
-        composable(APPROUTES.HOME_CONTENT.name) {
-            HomeContent(navController)
-        }
-        composable(APPROUTES.DETAIL.name) {
-            DetailPage()
-        }
-
     }
 }
