@@ -45,7 +45,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.phatnv.widgets.data.enum.APPROUTES
-import com.phatnv.widgets.ui.theme.WidgetsTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -201,21 +200,5 @@ fun HomeContent(drawerState: DrawerState, scope: CoroutineScope, params: String?
                 """.trimIndent(),
             )
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-//@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    WidgetsTheme {
-        Greeting("Android")
     }
 }
