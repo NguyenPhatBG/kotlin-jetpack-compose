@@ -1,4 +1,4 @@
-package com.phatnv.widgets.src.home
+package com.phatnv.widgets.presentation.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

@@ -1,4 +1,4 @@
-package com.phatnv.widgets.ui.theme
+package com.phatnv.widgets.theme
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp

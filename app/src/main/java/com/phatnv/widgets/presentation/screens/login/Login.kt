@@ -1,4 +1,4 @@
-package com.phatnv.widgets.src.login
+package com.phatnv.widgets.presentation.screens.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

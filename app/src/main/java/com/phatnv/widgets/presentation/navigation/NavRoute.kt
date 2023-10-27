@@ -1,4 +1,4 @@
-package com.phatnv.widgets.src.route
+package com.phatnv.widgets.presentation.navigation
 
 import com.phatnv.widgets.data.enum.APPROUTES
 

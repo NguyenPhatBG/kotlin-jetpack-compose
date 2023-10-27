@@ -1,4 +1,4 @@
-package com.phatnv.widgets.src.route
+package com.phatnv.widgets.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -6,8 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.phatnv.widgets.src.detail.DetailPage
-import com.phatnv.widgets.src.home.HomeScreen
+import com.phatnv.widgets.presentation.screens.detail.DetailPage
+import com.phatnv.widgets.presentation.screens.home.HomeScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {

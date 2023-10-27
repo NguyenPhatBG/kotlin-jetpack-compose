@@ -1,4 +1,4 @@
-package com.phatnv.widgets.ui.theme
+package com.phatnv.widgets.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable

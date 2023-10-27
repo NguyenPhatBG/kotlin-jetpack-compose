@@ -1,8 +1,8 @@
-package com.phatnv.widgets.src
+package com.phatnv.widgets.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
-import com.phatnv.widgets.src.route.NavigationGraph
+import com.phatnv.widgets.presentation.navigation.NavigationGraph
 
 @Composable
 fun MainScreen() {
