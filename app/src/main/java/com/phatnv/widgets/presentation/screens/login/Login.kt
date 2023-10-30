@@ -11,27 +11,39 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import com.phatnv.widgets.data.enum.APPROUTES
+import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginPage(navController: NavController) {
+fun LoginPage(onClick: () -> Unit) {
     Scaffold {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Button(onClick = {
-                navController.navigate(APPROUTES.HOME.name) {
-                    popUpTo(APPROUTES.LOGIN.name) {
-                        inclusive = true
-                    }
-                }
-            }, modifier = Modifier.padding(it)) {
+            Button(onClick = onClick, modifier = Modifier.padding(it)) {
                 Text(text = "Login")
             }
         }
     }
 }
+
+@Preview(showSystemUi = true)
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ShowLoginPage(onClick: () -> Unit) {
+    Scaffold {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Button(onClick = onClick, modifier = Modifier.padding(it)) {
+                Text(text = "Login")
+            }
+        }
+    }
+}
+
+

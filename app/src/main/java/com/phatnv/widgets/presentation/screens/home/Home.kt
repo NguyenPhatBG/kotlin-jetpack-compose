@@ -29,9 +29,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -109,7 +109,7 @@ fun DrawerContent(
                 imageVector = Icons.Filled.AccountCircle,
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
-            );
+            )
         }
         Spacer(modifier = Modifier.height(12.dp))
         menus.forEach {
@@ -128,7 +128,7 @@ fun DrawerContent(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeContent(drawerState: DrawerState, scope: CoroutineScope, params: String?) {
-    var presses by remember { mutableStateOf(0) }
+    var presses by remember { mutableIntStateOf(0) }
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -192,7 +192,7 @@ fun HomeContent(drawerState: DrawerState, scope: CoroutineScope, params: String?
                 modifier = Modifier.padding(8.dp),
                 text =
                 """
-                    This is an example of a scaffold. It uses the Scaffold composable's parameters to create a screen with a simple top app bar, bottom app bar, and floating action button.
+                    This is an example of a scaffold. It uses the Scaffold compatible's parameters to create a screen with a simple top app bar, bottom app bar, and floating action button.
 
                     It also contains some basic inner content, such as this text.
 

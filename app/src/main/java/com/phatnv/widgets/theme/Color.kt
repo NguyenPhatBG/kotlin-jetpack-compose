@@ -14,18 +14,12 @@ class AppColors(
  error: Color,
  isLight: Boolean
 ) {
- var primary by mutableStateOf(primary)
-  private set
- var textSecondary by mutableStateOf(textSecondary)
-  private set
- var textPrimary by mutableStateOf(textPrimary)
-  private set
- var error by mutableStateOf(error)
-  private set
- var background by mutableStateOf(background)
-  private set
- var isLight by mutableStateOf(isLight)
-  internal set
+ private var primary by mutableStateOf(primary)
+ private var textSecondary by mutableStateOf(textSecondary)
+ private var textPrimary by mutableStateOf(textPrimary)
+ private var error by mutableStateOf(error)
+ private var background by mutableStateOf(background)
+ private var isLight by mutableStateOf(isLight)
 
  fun copy(
   primary: Color = this.primary,

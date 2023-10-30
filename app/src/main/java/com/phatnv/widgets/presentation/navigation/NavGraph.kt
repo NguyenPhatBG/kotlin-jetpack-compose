@@ -6,15 +6,22 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.phatnv.widgets.data.enum.APPROUTES
 import com.phatnv.widgets.presentation.screens.detail.DetailPage
 import com.phatnv.widgets.presentation.screens.home.HomeScreen
+import com.phatnv.widgets.presentation.screens.login.LoginPage
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = NavRoute.Home.withArgs(NavRoute.Home.params)
+        startDestination = NavRoute.Login.path
     ) {
+        composable(route = NavRoute.Login.path) {
+            LoginPage(onClick = {
+                navController.navigate(NavRoute.Login.path)
+            })
+        }
         composable(
             NavRoute.Home.withArgsFormat(NavRoute.Home.params),
             arguments = listOf(
@@ -30,7 +37,7 @@ fun NavigationGraph(navController: NavHostController) {
             )
         }
         composable(
-            NavRoute.Detail.withArgsFormat( NavRoute.Detail.id, NavRoute.Detail.name),
+            NavRoute.Detail.withArgsFormat(NavRoute.Detail.id, NavRoute.Detail.name),
             arguments = listOf(
                 navArgument(NavRoute.Detail.id) { type = NavType.StringType },
                 navArgument(NavRoute.Detail.name) { type = NavType.StringType }
