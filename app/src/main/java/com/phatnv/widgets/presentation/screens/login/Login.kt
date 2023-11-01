@@ -116,7 +116,7 @@ fun LoginPage() {
                     contentDescription = "Logo",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize(),
-                    colorFilter = ColorFilter.tint(Color.Red)
+                    colorFilter = ColorFilter.tint(AppTheme.colors.primary)
                 )
             }
             OutlinedTextField(

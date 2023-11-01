@@ -14,12 +14,12 @@ class AppColors(
     error: Color,
     isLight: Boolean
 ) {
-    private var primary by mutableStateOf(primary)
-    private var textSecondary by mutableStateOf(textSecondary)
-    private var textPrimary by mutableStateOf(textPrimary)
-    private var error by mutableStateOf(error)
-    private var background by mutableStateOf(background)
-    private var isLight by mutableStateOf(isLight)
+    var primary by mutableStateOf(primary)
+    var textSecondary by mutableStateOf(textSecondary)
+    var textPrimary by mutableStateOf(textPrimary)
+    var error by mutableStateOf(error)
+    var background by mutableStateOf(background)
+    var isLight by mutableStateOf(isLight)
 
     fun copy(
         primary: Color = this.primary,
@@ -46,27 +46,16 @@ class AppColors(
     }
 }
 
-var colorLightPrimary = Color(0xFFFFB400)
-    private set
-var colorLightTextPrimary = Color(0xFF000000)
-    private set
-var colorLightTextSecondary = Color(0xFF6C727A)
-    private set
-var colorLightBackground = Color(0xFFFFFFFF)
-    private set
-var colorLightError = Color(0xFFD62222)
-    private set
-
-var colorDarkPrimary = Color(0xFF0037FF)
-    private set
-var colorDarkTextPrimary = Color(0xFFFAFAFA)
-    private set
-var colorDarkTextSecondary = Color(0xFF6C727A)
-    private set
-var colorDarkBackground = Color(0xFF090A0A)
-    private set
-var colorDarkError = Color(0xFFD62222)
-    private set
+private var colorLightPrimary = Color(0xFFFFB400)
+private var colorLightTextPrimary = Color(0xFF000000)
+private var colorLightTextSecondary = Color(0xFF6C727A)
+private var colorLightBackground = Color(0xFFFFFFFF)
+private var colorLightError = Color(0xFFD62222)
+private var colorDarkPrimary = Color(0xFF0037FF)
+private var colorDarkTextPrimary = Color(0xFFFAFAFA)
+private var colorDarkTextSecondary = Color(0xFF6C727A)
+private var colorDarkBackground = Color(0xFF090A0A)
+private var colorDarkError = Color(0xFFD62222)
 
 fun lightColors(
     primary: Color = colorLightPrimary,
