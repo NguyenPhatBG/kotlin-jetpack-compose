@@ -87,4 +87,4 @@ fun darkColors(
     isLight = false
 )
 
-val LocalColors = staticCompositionLocalOf { lightColors() }
+val LocalColors = staticCompositionLocalOf(::lightColors)

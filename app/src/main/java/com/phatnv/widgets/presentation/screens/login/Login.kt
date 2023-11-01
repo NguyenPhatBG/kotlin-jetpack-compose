@@ -2,14 +2,17 @@ package com.phatnv.widgets.presentation.screens.login
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -40,6 +43,7 @@ import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
@@ -87,6 +91,16 @@ fun LoginPage() {
     Scaffold {
         Column(
             modifier = Modifier
+                .statusBarsPadding()
+                .navigationBarsPadding()
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            AppTheme.colors.background,
+                            Color.Cyan
+                        ),
+                    ),
+                )
                 .padding(horizontal = AppTheme.dimensions.paddingLarge)
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Center,
