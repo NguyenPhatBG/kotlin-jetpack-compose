@@ -10,12 +10,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.phatnv.widgets.presentation.widgets.ButtonCommon
 import com.phatnv.widgets.presentation.navigation.DetailModel
+import com.phatnv.widgets.presentation.widgets.ButtonCommon
 
 @Composable
 fun DetailPage(
-    data : DetailModel,
+    data: DetailModel,
     popBackStack: (String) -> Unit
 ) {
     Column(

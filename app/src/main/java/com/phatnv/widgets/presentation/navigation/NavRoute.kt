@@ -3,6 +3,9 @@ package com.phatnv.widgets.presentation.navigation
 import com.phatnv.widgets.data.enum.APPROUTES
 
 sealed class NavRoute(val path: String) {
+
+    object Authentication : NavRoute(APPROUTES.AUTHENTICATION.name)
+
     object Login : NavRoute(APPROUTES.LOGIN.name)
 
     object Home : NavRoute(APPROUTES.HOME.name) {

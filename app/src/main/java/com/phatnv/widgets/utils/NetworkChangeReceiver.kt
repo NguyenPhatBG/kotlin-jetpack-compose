@@ -5,9 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 
 class NetworkChangeReceiver : BroadcastReceiver() {
     var onNetworkChangeListener: OnNetworkChangeListener? = null
