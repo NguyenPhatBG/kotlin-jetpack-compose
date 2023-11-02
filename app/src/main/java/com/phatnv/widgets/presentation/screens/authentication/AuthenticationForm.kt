@@ -21,6 +21,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.phatnv.widgets.data.enum.AuthenticationMode
 import com.phatnv.widgets.data.enum.PasswordRequirements
 
@@ -38,6 +39,7 @@ fun AuthenticationForm(
     onAuthenticate: () -> Unit,
     onToggleMode: () -> Unit
 ) {
+    lateinit var googleSignInClient: GoogleSignInClient
     val focusManager = LocalFocusManager.current
     val (emailRef, passwordRef) = FocusRequester.createRefs()
 
@@ -99,6 +101,11 @@ fun AuthenticationForm(
                 )
             }
         }
+        ButtonGoogleSignIn(
+            onGoogleSignInCompleted = { token -> println(token) },
+            onError = {},
+            googleSignInClient = googleSignInClient,
+        )
         Spacer(modifier = Modifier.weight(1f))
         ToggleAuthenticationMode(modifier = Modifier.fillMaxWidth(),
             authenticationMode = authenticationMode,

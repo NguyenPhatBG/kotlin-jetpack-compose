@@ -10,4 +10,6 @@ sealed class AuthenticationEvent {
     object Authenticate : AuthenticationEvent()
 
     object ErrorDismissed : AuthenticationEvent()
+
+    object GoogleSignIn: AuthenticationEvent()
 }

@@ -1,9 +1,15 @@
 package com.phatnv.widgets.data.model.request
 
+import android.content.Context
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.phatnv.widgets.data.constants.AppConstants
 import com.phatnv.widgets.data.enum.AuthenticationMode
 import com.phatnv.widgets.data.enum.PasswordRequirements
 import kotlinx.coroutines.Dispatchers
@@ -50,6 +56,10 @@ class AuthenticationViewModel : ViewModel() {
             is AuthenticationEvent.ErrorDismissed -> {
                 dismissError()
             }
+
+            is AuthenticationEvent.GoogleSignIn -> {
+                getGoogleSignInClient()
+            }
         }
     }
 
@@ -72,8 +82,7 @@ class AuthenticationViewModel : ViewModel() {
             requirements.add(PasswordRequirements.NUMBER)
         }
         uiState.value = uiState.value.copy(
-            password = password,
-            passwordRequirements = requirements.toList()
+            password = password, passwordRequirements = requirements.toList()
         )
     }
 
@@ -97,6 +106,13 @@ class AuthenticationViewModel : ViewModel() {
         uiState.value = uiState.value.copy(
             error = null
         )
+    }
+
+    private fun getGoogleSignInClient() {
+//        val signInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(AppConstants.CLIENT_ID).build()
+//
+//        return GoogleSignIn.getClient(context, signInOptions)
     }
 
     private fun navigateToDashboardPage() {
