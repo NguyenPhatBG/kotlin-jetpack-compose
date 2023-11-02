@@ -11,5 +11,5 @@ sealed class AuthenticationEvent {
 
     object ErrorDismissed : AuthenticationEvent()
 
-    object GoogleSignIn: AuthenticationEvent()
+    class GoogleSignIn(val idToken: String): AuthenticationEvent()
 }

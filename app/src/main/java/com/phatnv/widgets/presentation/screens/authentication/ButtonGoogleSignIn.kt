@@ -3,6 +3,7 @@ package com.phatnv.widgets.presentation.screens.authentication
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.compose.foundation.layout.Row
@@ -63,6 +64,7 @@ fun ButtonGoogleSignIn(
                 if (account == null) {
                     onError()
                 } else {
+                    Log.i("ABC", "123")
                     coroutineScope.launch {
                         onGoogleSignInCompleted(account.idToken!!)
                     }

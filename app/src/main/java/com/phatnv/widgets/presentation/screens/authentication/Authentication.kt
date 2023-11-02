@@ -65,7 +65,11 @@ fun AuthenticationContent(
             },
             onToggleMode = {
                 handleEvent(AuthenticationEvent.ToggleAuthenticationMode)
-            })
+            },
+            onGoogleSignInCompleted = {idToken ->
+                handleEvent(AuthenticationEvent.GoogleSignIn(idToken))
+            }
+        )
         authenticationState.error?.let { error ->
             AuthenticationErrorDialog(error = error, dismissError = {
                 handleEvent(

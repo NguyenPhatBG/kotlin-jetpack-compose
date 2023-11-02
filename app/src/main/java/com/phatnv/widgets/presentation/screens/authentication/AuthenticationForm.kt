@@ -40,6 +40,7 @@ fun AuthenticationForm(
     onEmailChanged: (email: String) -> Unit,
     onPasswordChanged: (password: String) -> Unit,
     onAuthenticate: () -> Unit,
+    onGoogleSignInCompleted: (idToken: String) -> Unit,
     onToggleMode: () -> Unit
 ) {
     val context = LocalContext.current
@@ -105,9 +106,7 @@ fun AuthenticationForm(
             }
         }
         ButtonGoogleSignIn(
-            onGoogleSignInCompleted = { idToken ->
-                println(idToken)
-            },
+            onGoogleSignInCompleted = onGoogleSignInCompleted,
             onError = {},
             googleSignInClient = GoogleSignIn.getClient(
                 context,

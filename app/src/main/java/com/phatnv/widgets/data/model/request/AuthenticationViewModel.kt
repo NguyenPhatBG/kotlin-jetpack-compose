@@ -1,5 +1,8 @@
 package com.phatnv.widgets.data.model.request
 
+import android.util.Log
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -52,7 +55,7 @@ class AuthenticationViewModel : ViewModel() {
             }
 
             is AuthenticationEvent.GoogleSignIn -> {
-                getGoogleSignInClient()
+                getGoogleSignInClient(authenticationEvent.idToken)
             }
         }
     }
@@ -102,7 +105,8 @@ class AuthenticationViewModel : ViewModel() {
         )
     }
 
-    private fun getGoogleSignInClient() {
+    private fun getGoogleSignInClient(idToken: String) {
+        Log.i("ABCSOFT", "TOKEN GOOGLE SIGN-IN: $idToken")
     }
 
     private fun navigateToDashboardPage() {
