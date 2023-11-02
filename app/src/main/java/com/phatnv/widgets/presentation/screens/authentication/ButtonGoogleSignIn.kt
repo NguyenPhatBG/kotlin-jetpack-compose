@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -73,7 +75,8 @@ fun ButtonGoogleSignIn(
     Button(
         onClick = { authResultLauncher.launch(signInRequestCode) },
         modifier = Modifier
-            .width(300.dp)
+            .padding(all = 32.dp)
+            .fillMaxWidth()
             .height(45.dp),
         shape = RoundedCornerShape(12.dp),
         colors = ButtonDefaults.buttonColors(Color.White),
