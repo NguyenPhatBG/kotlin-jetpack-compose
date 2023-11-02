@@ -1,18 +1,15 @@
-@file:OptIn(ExperimentalComposeUiApi::class)
-
 package com.phatnv.widgets.presentation.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.phatnv.widgets.presentation.screens.authentication.AuthenticationPage
+import com.phatnv.widgets.presentation.screens.dashboard.DashboardPage
 import com.phatnv.widgets.presentation.screens.detail.DetailPage
 import com.phatnv.widgets.presentation.screens.home.HomeScreen
-import com.phatnv.widgets.presentation.screens.login.LoginPage
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -21,10 +18,10 @@ fun NavigationGraph(navController: NavHostController) {
         startDestination = NavRoute.Authentication.path
     ) {
         composable(route = NavRoute.Authentication.path) {
-            AuthenticationPage()
+            AuthenticationPage(navController)
         }
-        composable(route = NavRoute.Login.path) {
-            LoginPage()
+        composable(route = NavRoute.Dashboard.path) {
+            DashboardPage()
         }
         composable(
             NavRoute.Home.withArgsFormat(NavRoute.Home.params),

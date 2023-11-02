@@ -1,5 +1,7 @@
 package com.phatnv.widgets.presentation.screens.authentication
 
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,7 +17,12 @@ fun AuthenticationButton(
     enableAuthentication: Boolean,
     onAuthenticate: () -> Unit,
 ) {
-    Button(modifier = modifier, onClick = { onAuthenticate() }, enabled = enableAuthentication) {
+    Button(
+        modifier = modifier.fillMaxWidth(),
+        contentPadding = PaddingValues(),
+        onClick = { onAuthenticate() },
+        enabled = enableAuthentication
+    ) {
         Text(
             text = stringResource(
                 if (authenticationMode == AuthenticationMode.SIGN_IN) {

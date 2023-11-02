@@ -101,7 +101,7 @@ fun LoginPage() {
                         ),
                     ),
                 )
-                .padding(horizontal = AppTheme.dimensions.paddingLarge)
+                .padding(horizontal = AppTheme.dimensions.paddingSmall)
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,

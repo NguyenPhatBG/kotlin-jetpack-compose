@@ -6,7 +6,7 @@ sealed class NavRoute(val path: String) {
 
     object Authentication : NavRoute(APPROUTES.AUTHENTICATION.name)
 
-    object Login : NavRoute(APPROUTES.LOGIN.name)
+    object Dashboard : NavRoute(APPROUTES.DASHBOARD.name)
 
     object Home : NavRoute(APPROUTES.HOME.name) {
         const val params = "params"

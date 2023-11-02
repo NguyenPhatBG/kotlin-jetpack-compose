@@ -1,6 +1,7 @@
 package com.phatnv.widgets.presentation.screens.authentication
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +18,7 @@ import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.phatnv.widgets.data.enum.AuthenticationMode
@@ -39,7 +41,11 @@ fun AuthenticationForm(
     val focusManager = LocalFocusManager.current
     val (emailRef, passwordRef) = FocusRequester.createRefs()
 
-    Column(modifier = modifier) {
+    Column(modifier = modifier.pointerInput(Unit) {
+        detectTapGestures(onTap = {
+            focusManager.clearFocus()
+        })
+    }) {
         Spacer(modifier = Modifier.height(32.dp))
         AuthenticationTitle(authenticationMode = authenticationMode)
         Spacer(modifier = Modifier.height(40.dp))
@@ -73,7 +79,7 @@ fun AuthenticationForm(
                 PasswordInput(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .focusRequester(emailRef)
+                        .focusRequester(passwordRef)
                         .focusProperties {
                             previous = emailRef
                         },
@@ -86,6 +92,7 @@ fun AuthenticationForm(
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 AuthenticationButton(
+                    modifier = Modifier.height(48.dp),
                     authenticationMode = authenticationMode,
                     enableAuthentication = enableAuthentication,
                     onAuthenticate = onAuthenticate,
@@ -93,12 +100,10 @@ fun AuthenticationForm(
             }
         }
         Spacer(modifier = Modifier.weight(1f))
-        ToggleAuthenticationMode(
-            modifier = Modifier.fillMaxWidth(),
+        ToggleAuthenticationMode(modifier = Modifier.fillMaxWidth(),
             authenticationMode = authenticationMode,
             toggleAuthentication = {
                 onToggleMode()
-            }
-        )
+            })
     }
 }

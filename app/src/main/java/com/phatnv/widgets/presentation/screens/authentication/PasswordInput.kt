@@ -9,8 +9,8 @@ import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -35,7 +35,7 @@ fun PasswordInput(
     var showPassword by remember {
         mutableStateOf(false)
     }
-    TextField(
+    OutlinedTextField(
         modifier = modifier,
         value = password ?: "",
         onValueChange = { password ->

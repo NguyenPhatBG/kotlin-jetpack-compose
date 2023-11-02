@@ -1,9 +1,12 @@
 package com.phatnv.widgets.presentation.screens.authentication
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.phatnv.widgets.R
 import com.phatnv.widgets.data.enum.AuthenticationMode
@@ -22,6 +25,7 @@ fun AuthenticationTitle(
             }
         ),
         fontSize = 24.sp,
-        modifier = modifier,
+        modifier = modifier.padding(horizontal = 32.dp),
+        fontWeight = FontWeight.Bold,
     )
 }

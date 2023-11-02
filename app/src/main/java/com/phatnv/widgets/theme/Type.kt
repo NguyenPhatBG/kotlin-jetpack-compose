@@ -48,6 +48,24 @@ data class AppTypography(
     val labelLarge: TextStyle = TextStyle(fontSize = 14.sp).merge(reuseTextStyle),
     val labelMedium: TextStyle = TextStyle(fontSize = 12.sp).merge(reuseTextStyle),
     val labelSmall: TextStyle = TextStyle(fontSize = 10.sp).merge(reuseTextStyle),
+    val titleBarStyle: TextStyle = TextStyle(
+        fontSize = 22.sp,
+        fontWeight = FontWeight(700),
+        letterSpacing = 0.5.sp,
+        fontFamily = rapewayFontFamily,
+    ),
+    val headingStyle: TextStyle = TextStyle(
+        fontSize = 24.sp,
+        fontWeight = FontWeight(600),
+        letterSpacing = 0.5.sp,
+        fontFamily = rapewayFontFamily
+    ),
+    val smallHeadingStyle: TextStyle = TextStyle(
+        fontSize = 16.sp,
+        fontWeight = FontWeight(600),
+        letterSpacing = 0.5.sp,
+        fontFamily = rapewayFontFamily
+    )
 )
 
 internal val LocalTypography = staticCompositionLocalOf { AppTypography() }
