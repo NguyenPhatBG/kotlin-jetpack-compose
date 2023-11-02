@@ -1,11 +1,10 @@
 package com.phatnv.widgets.data.model.request
 
-import android.util.Log
+import android.app.Application
 import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.phatnv.widgets.data.enum.AuthenticationMode
 import com.phatnv.widgets.data.enum.PasswordRequirements
@@ -15,10 +14,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class AuthenticationViewModel : ViewModel() {
+class AuthenticationViewModel(application: Application) : AndroidViewModel(application) {
     val uiState = MutableStateFlow(AuthenticationState())
+
     private val _navigateToDashboard = MutableLiveData<Boolean>()
     val navigateToDashboard: LiveData<Boolean> = _navigateToDashboard
+
+    private val context by lazy {
+        application.applicationContext
+    }
 
     private fun toggleAuthenticationMode() {
         val authenticationMode = uiState.value.authenticationMode
@@ -106,7 +110,7 @@ class AuthenticationViewModel : ViewModel() {
     }
 
     private fun getGoogleSignInClient(idToken: String) {
-        Log.i("ABCSOFT", "TOKEN GOOGLE SIGN-IN: $idToken")
+        Toast.makeText(context, "Success! $idToken", Toast.LENGTH_SHORT).show()
     }
 
     private fun navigateToDashboardPage() {
