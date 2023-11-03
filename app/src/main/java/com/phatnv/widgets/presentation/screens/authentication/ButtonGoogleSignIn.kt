@@ -80,7 +80,7 @@ fun ButtonGoogleSignIn(
             }
         },
         modifier = Modifier
-            .padding(all = 32.dp)
+            .padding(32.dp, 0.dp, 32.dp, 8.dp)
             .fillMaxWidth()
             .height(45.dp),
         shape = RoundedCornerShape(12.dp),

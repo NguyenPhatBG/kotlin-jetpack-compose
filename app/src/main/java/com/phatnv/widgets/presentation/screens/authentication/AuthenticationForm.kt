@@ -19,7 +19,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.phatnv.widgets.data.enum.AuthenticationMode
@@ -38,9 +37,9 @@ fun AuthenticationForm(
     onPasswordChanged: (password: String) -> Unit,
     onAuthenticate: () -> Unit,
     onGoogleSignInCompleted: (idToken: String) -> Unit,
+    onFacebookSignInCompleted: (idToken: String) -> Unit,
     onToggleMode: () -> Unit
 ) {
-    val context = LocalContext.current
     val focusManager = LocalFocusManager.current
     val (emailRef, passwordRef) = FocusRequester.createRefs()
 
@@ -102,8 +101,13 @@ fun AuthenticationForm(
                 )
             }
         }
+        TextBetweenLines()
         ButtonGoogleSignIn(
             onGoogleSignInCompleted = onGoogleSignInCompleted,
+            onError = {},
+        )
+        ButtonFacebookSignIn(
+            onFacebookSignInCompleted = onFacebookSignInCompleted,
             onError = {},
         )
         Spacer(modifier = Modifier.weight(1f))

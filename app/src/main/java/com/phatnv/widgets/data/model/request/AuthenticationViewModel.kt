@@ -61,6 +61,10 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
             is AuthenticationEvent.GoogleSignIn -> {
                 getGoogleSignInClient(authenticationEvent.idToken)
             }
+
+            is AuthenticationEvent.FacebookSignIn -> {
+                getFacebookSignInClient(authenticationEvent.idToken)
+            }
         }
     }
 
@@ -110,6 +114,22 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
     }
 
     private fun getGoogleSignInClient(idToken: String) {
+        uiState.value = uiState.value.copy(
+            isLoading = true
+        )
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(2000L)
+
+            withContext(Dispatchers.Main) {
+                uiState.value = uiState.value.copy(
+                    isLoading = false,
+                )
+                Toast.makeText(context, "Token: $idToken", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun getFacebookSignInClient(idToken: String) {
         uiState.value = uiState.value.copy(
             isLoading = true
         )

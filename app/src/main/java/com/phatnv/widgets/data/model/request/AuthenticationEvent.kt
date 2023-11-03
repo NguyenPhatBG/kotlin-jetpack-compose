@@ -12,4 +12,6 @@ sealed class AuthenticationEvent {
     object ErrorDismissed : AuthenticationEvent()
 
     class GoogleSignIn(val idToken: String): AuthenticationEvent()
+
+    class FacebookSignIn(val idToken: String): AuthenticationEvent()
 }

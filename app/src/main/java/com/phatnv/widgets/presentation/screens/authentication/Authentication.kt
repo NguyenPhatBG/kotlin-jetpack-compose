@@ -68,6 +68,9 @@ fun AuthenticationContent(
             },
             onGoogleSignInCompleted = {idToken ->
                 handleEvent(AuthenticationEvent.GoogleSignIn(idToken))
+            },
+            onFacebookSignInCompleted = {idToken ->
+                handleEvent(AuthenticationEvent.FacebookSignIn(idToken))
             }
         )
         authenticationState.error?.let { error ->
