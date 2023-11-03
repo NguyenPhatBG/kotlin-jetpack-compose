@@ -1,3 +1,9 @@
+/**
+ * Gmail: dev.phatnv@gmail.com
+ * Github: https://github.com/NguyenPhatBG
+ * Resource: https://github.com/NguyenPhatBG/kotlin-jetpack-compose
+ */
+
 package com.phatnv.widgets
 
 import android.net.ConnectivityManager
