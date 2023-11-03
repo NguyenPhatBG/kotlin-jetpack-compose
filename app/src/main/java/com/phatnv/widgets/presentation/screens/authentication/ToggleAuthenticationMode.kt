@@ -1,6 +1,7 @@
 package com.phatnv.widgets.presentation.screens.authentication
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -21,7 +22,10 @@ fun ToggleAuthenticationMode(
         modifier = modifier.padding(top = 16.dp),
         shadowElevation = 8.dp
     ) {
-        TextButton(onClick = { toggleAuthentication() }) {
+        TextButton(
+            shape = RoundedCornerShape(0.dp),
+            onClick = { toggleAuthentication() }
+        ) {
             Text(
                 stringResource(
                     if (authenticationMode == AuthenticationMode.SIGN_IN) {
