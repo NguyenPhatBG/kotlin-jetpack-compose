@@ -38,9 +38,7 @@ fun PasswordInput(
     OutlinedTextField(
         modifier = modifier,
         value = password ?: "",
-        onValueChange = { password ->
-            onPasswordChanged(password)
-        },
+        onValueChange = onPasswordChanged,
         label = {
             Text(text = stringResource(id = R.string.label_password))
         },

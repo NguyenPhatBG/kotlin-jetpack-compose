@@ -26,9 +26,7 @@ fun EmailInput(
     OutlinedTextField(
         modifier = modifier,
         value = email ?: "",
-        onValueChange = { email ->
-            onEmailChanged(email)
-        },
+        onValueChange = onEmailChanged,
         label = {
             Text(text = stringResource(id = R.string.label_email))
         },

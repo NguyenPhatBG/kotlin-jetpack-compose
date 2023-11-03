@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Widgets</string>
     <string name="default_web_client_id">773835491602-qlrldmnugjtg8ni380qdaan5475unjg5.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1036947980956978</string>
+    <string name="fb_login_protocol_scheme">fb1036947980956978</string>
+    <string name="facebook_client_token">1f7b76fe2973083698cecd8826c69a6d</string>
     <string name="app_menu">Menu</string>
     <string name="app_back">Back</string>
     <string name="app_loading">Loading</string>
