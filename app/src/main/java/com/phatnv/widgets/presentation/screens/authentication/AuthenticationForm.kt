@@ -22,9 +22,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.phatnv.widgets.data.constants.AppConstants
 import com.phatnv.widgets.data.enum.AuthenticationMode
 import com.phatnv.widgets.data.enum.PasswordRequirements
 
@@ -108,12 +105,6 @@ fun AuthenticationForm(
         ButtonGoogleSignIn(
             onGoogleSignInCompleted = onGoogleSignInCompleted,
             onError = {},
-            googleSignInClient = GoogleSignIn.getClient(
-                context,
-                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(AppConstants.CLIENT_ID)
-                    .build(),
-            ),
         )
         Spacer(modifier = Modifier.weight(1f))
         ToggleAuthenticationMode(modifier = Modifier.fillMaxWidth(),

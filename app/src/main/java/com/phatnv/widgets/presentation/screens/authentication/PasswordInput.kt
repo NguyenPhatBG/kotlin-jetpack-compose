@@ -47,6 +47,7 @@ fun PasswordInput(
         placeholder = {
             Text(stringResource(id = R.string.password_placeholder))
         },
+        singleLine = true,
         leadingIcon = {
             Icon(imageVector = Icons.Outlined.Lock, contentDescription = "Lock Icon")
         },

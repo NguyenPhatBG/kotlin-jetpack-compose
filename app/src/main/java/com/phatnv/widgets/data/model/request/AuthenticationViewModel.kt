@@ -110,7 +110,19 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
     }
 
     private fun getGoogleSignInClient(idToken: String) {
-        Toast.makeText(context, "Success! $idToken", Toast.LENGTH_SHORT).show()
+        uiState.value = uiState.value.copy(
+            isLoading = true
+        )
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(2000L)
+
+            withContext(Dispatchers.Main) {
+                uiState.value = uiState.value.copy(
+                    isLoading = false,
+                )
+                Toast.makeText(context, "Token: $idToken", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun navigateToDashboardPage() {

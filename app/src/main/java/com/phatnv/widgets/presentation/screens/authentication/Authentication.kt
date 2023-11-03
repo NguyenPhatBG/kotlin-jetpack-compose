@@ -19,11 +19,11 @@ import com.phatnv.widgets.presentation.navigation.NavRoute
 
 @Composable
 fun AuthenticationPage(navController: NavController) {
-    val viewModel: AuthenticationViewModel = viewModel()
+    val viewModel = viewModel<AuthenticationViewModel>()
     val navigateToDashboard by rememberUpdatedState(newValue = viewModel.navigateToDashboard.value)
 
     // Check the updated state in real-time
-    if (navigateToDashboard == true) {
+    if (navigateToDashboard is Boolean) {
         navController.navigate(NavRoute.Dashboard.path) {
             popUpTo(NavRoute.Authentication.path) { inclusive = true }
         }
