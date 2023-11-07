@@ -1,6 +1,5 @@
 package com.phatnv.widgets.utils
 import android.content.Context
-import android.util.Log
 import androidx.datastore.core.*
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -12,7 +11,7 @@ import androidx.datastore.preferences.preferencesDataStore as preferencesDataSto
 
 class AppDataStoreManager(private val context: Context) {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "stores")
-    suspend fun saveData(data: String, key: String) {
+    suspend fun saveData(key: String, data: String) {
         val saveKey = stringPreferencesKey(key)
         context.dataStore.edit { preferences ->
             preferences[saveKey] = data

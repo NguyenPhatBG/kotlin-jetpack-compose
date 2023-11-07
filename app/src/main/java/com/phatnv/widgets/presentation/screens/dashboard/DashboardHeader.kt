@@ -28,7 +28,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.facebook.core.BuildConfig
 import com.phatnv.widgets.R
+import com.phatnv.widgets.data.enum.AppStorageKey
 import com.phatnv.widgets.presentation.navigation.NavRoute
 import com.phatnv.widgets.theme.AppTheme
 import com.phatnv.widgets.utils.AppDataStoreManagerSingleton
@@ -57,7 +59,6 @@ fun DashboardHeader(
             Text(
                 stringResource(id = R.string.app_heading),
                 modifier = Modifier
-
                     .padding(top = 8.dp),
                 style = AppTheme.typography.titleBarStyle,
                 textAlign = TextAlign.Start
@@ -79,7 +80,7 @@ fun DashboardHeader(
 suspend fun logout(navController: NavController) {
 //    navController.popBackStack(NavRoute.Authentication.path, true)
     val appDataStoreManager = AppDataStoreManagerSingleton.getInstance()
-    appDataStoreManager.deleteKey("token")
+    appDataStoreManager.deleteKey(AppStorageKey.TOKEN.name)
     navController.navigate(NavRoute.Authentication.path)
 }
 

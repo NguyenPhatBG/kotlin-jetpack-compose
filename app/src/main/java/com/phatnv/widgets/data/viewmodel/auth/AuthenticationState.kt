@@ -1,11 +1,14 @@
 package com.phatnv.widgets.data.viewmodel.auth
 
+import com.facebook.core.BuildConfig
 import com.phatnv.widgets.data.enum.AuthenticationMode
 import com.phatnv.widgets.data.enum.PasswordRequirements
+import com.phatnv.widgets.presentation.navigation.NavRoute
 
 data class AuthenticationState(
     val authenticationMode: AuthenticationMode = AuthenticationMode.SIGN_IN,
-    val email: String? = "longK4",
+    val email: String? = if (BuildConfig.DEBUG) "" else "longK4",
+
     val password: String? = "12345678",
     val passwordRequirements: List<PasswordRequirements> = emptyList(),
     val isLoading: Boolean = false,

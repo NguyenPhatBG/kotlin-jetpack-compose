@@ -2,6 +2,7 @@ package com.phatnv.widgets.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
+import com.phatnv.widgets.data.enum.AppStorageKey
 import com.phatnv.widgets.presentation.navigation.NavRoute
 import com.phatnv.widgets.presentation.navigation.NavigationGraph
 import com.phatnv.widgets.utils.AppDataStoreManagerSingleton
@@ -13,7 +14,7 @@ fun MainScreen() {
     var startDestination: String
     val appDataStoreManager = AppDataStoreManagerSingleton.getInstance()
     runBlocking {
-        val token = appDataStoreManager.getData("token")
+        val token = appDataStoreManager.getData(AppStorageKey.TOKEN.name)
         startDestination = if (token.isNotEmpty()) {
             NavRoute.Dashboard.path
         } else {

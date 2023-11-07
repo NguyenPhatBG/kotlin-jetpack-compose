@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.phatnv.widgets.data.enum.AppStorageKey
 import com.phatnv.widgets.data.enum.AuthenticationMode
 import com.phatnv.widgets.data.enum.PasswordRequirements
 import com.phatnv.widgets.data.model.request.LoginRequest
@@ -111,16 +112,17 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
                     device_token = null
                 )
             )
+
             delay(1000)
             withContext(Dispatchers.Main) {
                 uiState.value = uiState.value.copy(
                     isLoading = false,
                 )
-                if (response.code() == 200) {
+                if (response.code() == 200 || response.code() == 204) {
                     if (response.body()?.token != null) {
                         navigateToDashboardPage()
                         val appDataStoreManager = AppDataStoreManagerSingleton.getInstance()
-                        appDataStoreManager.saveData(response.body()?.token ?: "", "token")
+                        appDataStoreManager.saveData(AppStorageKey.TOKEN.name, response.body()?.token ?: "")
                     } else {
                         Toast.makeText(context, "Token not found", Toast.LENGTH_SHORT).show()
                     }

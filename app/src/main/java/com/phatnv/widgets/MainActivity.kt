@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.facebook.core.BuildConfig
 import com.phatnv.widgets.presentation.MainScreen
 import com.phatnv.widgets.theme.AppTheme
 import com.phatnv.widgets.utils.AppDataStoreManager
@@ -40,6 +41,7 @@ class MainActivity : ComponentActivity(), NetworkChangeReceiver.OnNetworkChangeL
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         AppDataStoreManagerSingleton.initialize(this)
         // create splash screen

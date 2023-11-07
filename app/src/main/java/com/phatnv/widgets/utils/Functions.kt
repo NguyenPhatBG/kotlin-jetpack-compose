@@ -15,7 +15,6 @@ class Functions {
             }
             return message
         }
-
     }
 
 }
