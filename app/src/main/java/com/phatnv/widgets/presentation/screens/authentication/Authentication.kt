@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
@@ -12,10 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.phatnv.widgets.data.model.request.AuthenticationEvent
-import com.phatnv.widgets.data.model.request.AuthenticationState
-import com.phatnv.widgets.data.model.request.AuthenticationViewModel
+import com.phatnv.widgets.data.viewmodel.auth.AuthenticationEvent
+import com.phatnv.widgets.data.viewmodel.auth.AuthenticationState
+import com.phatnv.widgets.data.viewmodel.auth.AuthenticationViewModel
 import com.phatnv.widgets.presentation.navigation.NavRoute
+import com.phatnv.widgets.utils.AppDataStoreManagerSingleton
 
 @Composable
 fun AuthenticationPage(navController: NavController) {

@@ -205,13 +205,13 @@ fun LoginPage() {
                     password = newPassword
                 },
             )
-            if (email.isNotEmpty()) {
-                if (Validation.isValidEmail(email)) {
-                    Text(text = "Email is valid", color = Color.Blue)
-                } else {
-                    Text(text = "Email is not valid", color = Color.Red)
-                }
-            }
+//            if (email.isNotEmpty()) {
+//                if (Validation.isValidEmail(email)) {
+//                    Text(text = "Email is valid", color = Color.Blue)
+//                } else {
+//                    Text(text = "Email is not valid", color = Color.Red)
+//                }
+//            }
             Spacer(modifier = Modifier.height(AppTheme.dimensions.paddingLarge))
             Button(
                 onClick = {

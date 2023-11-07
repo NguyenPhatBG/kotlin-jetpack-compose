@@ -13,17 +13,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Preview
 @Composable
 fun DashboardPage(
+    navController: NavController,
     modifier: Modifier = Modifier,
-    onDrawerClicked: () -> Unit = {}
+    onDrawerClicked: () -> Unit = {},
 ) {
     Column(
         modifier = modifier
@@ -34,13 +35,14 @@ fun DashboardPage(
         Column(modifier = Modifier.background(Color.Yellow)) {
             DashboardHeader(
                 modifier = Modifier.fillMaxWidth(),
-                onDrawerClicked = onDrawerClicked
+                onDrawerClicked = onDrawerClicked,
+                navController = navController,
             )
             Spacer(modifier = Modifier.height(32.dp))
             SleepSummary(modifier = Modifier.padding(start = 16.dp, end = 16.dp))
         }
         Spacer(modifier = Modifier.height(16.dp))
-        var selectedTab by remember {
+        val selectedTab by remember {
             mutableStateOf(SleepTab.Week)
         }
         DashboardHeaderTabs(selectedTab = selectedTab, onTabSelected = {})

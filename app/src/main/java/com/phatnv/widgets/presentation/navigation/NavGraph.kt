@@ -12,16 +12,16 @@ import com.phatnv.widgets.presentation.screens.detail.DetailPage
 import com.phatnv.widgets.presentation.screens.home.HomeScreen
 
 @Composable
-fun NavigationGraph(navController: NavHostController) {
+ fun NavigationGraph(navController: NavHostController, startDestination: String) {
     NavHost(
         navController = navController,
-        startDestination = NavRoute.Authentication.path
+        startDestination = startDestination
     ) {
         composable(route = NavRoute.Authentication.path) {
             AuthenticationPage(navController)
         }
         composable(route = NavRoute.Dashboard.path) {
-            DashboardPage()
+            DashboardPage(navController)
         }
         composable(
             NavRoute.Home.withArgsFormat(NavRoute.Home.params),

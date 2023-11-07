@@ -1,12 +1,12 @@
-package com.phatnv.widgets.data.model.request
+package com.phatnv.widgets.data.viewmodel.auth
 
 import com.phatnv.widgets.data.enum.AuthenticationMode
 import com.phatnv.widgets.data.enum.PasswordRequirements
 
 data class AuthenticationState(
     val authenticationMode: AuthenticationMode = AuthenticationMode.SIGN_IN,
-    val email: String? = null,
-    val password: String? = null,
+    val email: String? = "longK4",
+    val password: String? = "12345678",
     val passwordRequirements: List<PasswordRequirements> = emptyList(),
     val isLoading: Boolean = false,
     val error: String? = null

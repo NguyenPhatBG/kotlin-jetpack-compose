@@ -1,6 +1,7 @@
-package com.phatnv.widgets.data.model.request
+package com.phatnv.widgets.data.viewmodel.auth
 
 import android.app.Application
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -8,6 +9,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.phatnv.widgets.data.enum.AuthenticationMode
 import com.phatnv.widgets.data.enum.PasswordRequirements
+import com.phatnv.widgets.data.model.request.LoginRequest
+import com.phatnv.widgets.data.repository.AuthRepository
+import com.phatnv.widgets.utils.AppDataStoreManager
+import com.phatnv.widgets.utils.AppDataStoreManagerSingleton
+import com.phatnv.widgets.utils.Functions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,6 +22,7 @@ import kotlinx.coroutines.withContext
 
 class AuthenticationViewModel(application: Application) : AndroidViewModel(application) {
     val uiState = MutableStateFlow(AuthenticationState())
+    private val authRepository = AuthRepository()
 
     private val _navigateToDashboard = MutableLiveData<Boolean>()
     val navigateToDashboard: LiveData<Boolean> = _navigateToDashboard
@@ -68,7 +75,6 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
         }
     }
 
-
     private fun updateEmail(email: String) {
         uiState.value = uiState.value.copy(
             email = email
@@ -95,14 +101,33 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
         uiState.value = uiState.value.copy(
             isLoading = true
         )
-        viewModelScope.launch(Dispatchers.IO) {
-            delay(2000L)
 
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = authRepository.postLogin(
+                LoginRequest(
+                    username = uiState.value.email ?: "",
+                    password = uiState.value.password ?: "",
+                    device_type = 1,
+                    device_token = null
+                )
+            )
+            delay(1000)
             withContext(Dispatchers.Main) {
                 uiState.value = uiState.value.copy(
                     isLoading = false,
                 )
-                navigateToDashboardPage()
+                if (response.code() == 200) {
+                    if (response.body()?.token != null) {
+                        navigateToDashboardPage()
+                        val appDataStoreManager = AppDataStoreManagerSingleton.getInstance()
+                        appDataStoreManager.saveData(response.body()?.token ?: "", "token")
+                    } else {
+                        Toast.makeText(context, "Token not found", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    var messageError = Functions.handleError(response)
+                    Toast.makeText(context, messageError, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

@@ -1,15 +1,15 @@
-package com.phatnv.widgets.data.model.request
+package com.phatnv.widgets.data.viewmodel.auth
 
 sealed class AuthenticationEvent {
-    object ToggleAuthenticationMode : AuthenticationEvent()
+    data object ToggleAuthenticationMode : AuthenticationEvent()
 
     class EmailChanged(val emailAddress: String) : AuthenticationEvent()
 
     class PasswordChanged(val password: String) : AuthenticationEvent()
 
-    object Authenticate : AuthenticationEvent()
+    data object Authenticate : AuthenticationEvent()
 
-    object ErrorDismissed : AuthenticationEvent()
+    data object ErrorDismissed : AuthenticationEvent()
 
     class GoogleSignIn(val idToken: String): AuthenticationEvent()
 

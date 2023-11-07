@@ -24,6 +24,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.phatnv.widgets.presentation.MainScreen
 import com.phatnv.widgets.theme.AppTheme
+import com.phatnv.widgets.utils.AppDataStoreManager
+import com.phatnv.widgets.utils.AppDataStoreManagerSingleton
 import com.phatnv.widgets.utils.NetworkChangeReceiver
 import com.shashank.sony.fancytoastlib.FancyToast
 import kotlinx.coroutines.delay
@@ -36,9 +38,10 @@ class MainActivity : ComponentActivity(), NetworkChangeReceiver.OnNetworkChangeL
     private lateinit var networkChangeReceiver: NetworkChangeReceiver
     private lateinit var connectivityManager: ConnectivityManager
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        AppDataStoreManagerSingleton.initialize(this)
         // create splash screen
         installSplashScreen().apply {
             setKeepOnScreenCondition {
@@ -121,18 +124,5 @@ class MainActivity : ComponentActivity(), NetworkChangeReceiver.OnNetworkChangeL
     override fun onDestroy() {
         super.onDestroy()
         connectivityManager.unregisterNetworkCallback(networkCallback)
-    }
-
-    @Preview
-    @Composable
-    fun ShowMain() {
-        AppTheme {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colorScheme.background
-            ) {
-                MainScreen()
-            }
-        }
     }
 }

@@ -4,15 +4,15 @@ import com.phatnv.widgets.data.enum.APPROUTES
 
 sealed class NavRoute(val path: String) {
 
-    object Authentication : NavRoute(APPROUTES.AUTHENTICATION.name)
+    data object Authentication : NavRoute(APPROUTES.AUTHENTICATION.name)
 
-    object Dashboard : NavRoute(APPROUTES.DASHBOARD.name)
+    data object Dashboard : NavRoute(APPROUTES.DASHBOARD.name)
 
-    object Home : NavRoute(APPROUTES.HOME.name) {
+    data object Home : NavRoute(APPROUTES.HOME.name) {
         const val params = "params"
     }
 
-    object Detail : NavRoute(APPROUTES.DETAIL.name) {
+    data object Detail : NavRoute(APPROUTES.DETAIL.name) {
         const val id = "id"
         const val name = "name"
     }
